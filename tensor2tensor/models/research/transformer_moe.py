@@ -313,6 +313,17 @@ def transformer_moe_base():
 
   return hparams
 
+@regsitry.register_hparams
+def transformer_tdmca():
+    """Hyperparameters for T-DMCA of Liu et al., (2018)
+    """
+    hparams = transformer_moe_base()
+
+    hparams.add_hparam("layer_types", "#locm/redm/locm/redm/locm")
+    hparams.max_input_seq_length = 5000
+    hparams.max_target_seq_length = 5000
+
+    return hparams
 
 @registry.register_hparams
 def transformer_moe_8k():
